@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 PUBLIC = ROOT / "public"
 CSS = ROOT / "site" / "site.css"
+CALCULATOR = ROOT / "site" / "calculator.html"
 FONT_DIR = ROOT / "site" / "fonts"
 
 # Pinned LXGW WenKai v1.522 (17 March 2026).
@@ -361,6 +362,7 @@ def build() -> None:
     subset_wenkai(page, PUBLIC / "assets" / "fonts")
     (PUBLIC / "index.html").write_text(page)
     (PUBLIC / "report.html").write_text(redirect("index.html"))
+    shutil.copy(CALCULATOR, PUBLIC / "calculator.html")
     print(f"built report -> {PUBLIC}")
 
 

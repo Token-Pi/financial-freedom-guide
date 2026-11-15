@@ -248,6 +248,13 @@ class BuildTests(unittest.TestCase):
         pdfs = [path for path in ROOT.rglob("*.pdf") if ".git" not in path.parts]
         self.assertEqual(pdfs, [])
 
+    def test_calculator_is_published(self):
+        calc = self.public / "calculator.html"
+        self.assertTrue(calc.exists())
+        text = calc.read_text()
+        self.assertIn("每月定投 5 年复利估算器", text)
+        self.assertIn("fvMonthly", text)
+
 
 if __name__ == "__main__":
     unittest.main()
